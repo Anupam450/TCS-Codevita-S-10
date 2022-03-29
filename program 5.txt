@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string s;
+    string c;
+    cin >> s >> c;
+    int index = 0;
+    for (int i = 0; i < (int)c.length(); i++)
+    {
+        switch (c[i])
+        {
+        case 'R':
+            if (index + 1 < (int)s.length())
+                index++;
+            break;
+        case 'L':
+            if (index > 0)
+                index--;
+            break;
+        case 'T':
+            if (s[index] != '9')
+                s[index]++;
+            break;
+        case 'D':
+            if (s[index] != '0')
+                s[index]--;
+            break;
+        case 'S':
+            i++;
+            string num;
+            for (i; i < (int)c.length() && c[i] >= '0' && c[i] <= '9'; i++)
+                num.push_back(c[i]);
+            i--;
+            int ind = stoi(num);
+            swap(s[index], s[ind - 1]);
+            break;
+        }
+    }
+    cout << s << endl;
+}

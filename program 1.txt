@@ -1,0 +1,22 @@
+def find(n,arr,faces):
+  if(n==0):
+    return 1
+  if(arr[n]!=-1):
+    return arr[n]
+  c=0
+  for i in range(1,faces+1):
+    if(n-i>=0):
+      c=(c+find(n-i,arr,faces))
+  arr[n]=c
+  return arr[n]
+
+testcase=int(input())
+l=[]
+for i in range(0,testcase):
+  n,faces=input().split()
+  n=int(n)
+  faces=int(faces)
+  arr=[-1]*(n+1)
+  l.append(find(n,arr,faces))
+for j in l:
+  print(j)

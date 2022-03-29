@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Program3{
+  public static int isPrime(int i){
+     for(int j=2;j<=i/2;j++)
+          if(i%j==0)
+             return 0;
+        return 1;
+	}
+  
+  public static String func(ArrayList<Integer> arr,int n){
+    int m1,m2;
+    for(int i=0;i<arr.size();i++){
+      m1=arr.get(i);
+      for(int j=i+1;j<arr.size();j++){
+        m2=arr.get(j);
+        if(isPrime(m1)==0 && isPrime(m2)==0){
+          if((m1*m2)/((m2-m1)*(m2-m1))>n)
+          return String.valueOf(m1)+" "+String.valueOf(m2);
+        }
+      }
+    }
+    return "None";
+  }
+  public static void main(String[] args){
+  Scanner sc=new Scanner(System.in);
+  String s[]=sc.nextLine().split(" ");
+  ArrayList<Integer> arr=new ArrayList<>();
+  int i,n=Integer.parseInt(s[0]),n1=Integer.parseInt(s[1]),n2=Integer.parseInt(s[2]),t;
+  for(t=n1;t<=n2;t++)
+    arr.add(t);
+  System.out.println(func(arr,n));
+  }
+}
